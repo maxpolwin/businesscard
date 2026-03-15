@@ -374,6 +374,27 @@
       s.setProperty('--text', THEME.text);
       s.setProperty('--text-muted', THEME.textMuted);
     })();
+
+    // ── Translations (auto-detected from browser language) ──
+    var TRANSLATIONS = Object.freeze({
+      en: { email: 'Email', phone: 'Phone', linkedin: 'LinkedIn', viewProfile: 'View profile', eventLabel: 'Where did we meet?', eventPlaceholder: 'e.g. sample event', clearTitle: 'Clear', saveContact: 'Save contact', metaPrefix: 'Digital Business Card', ariaEmail: 'Send email', ariaPhone: 'Call', ariaLinkedin: 'Open LinkedIn profile', ariaClear: 'Clear event field', ariaSave: 'Save contact as vCard', ariaNav: 'Contact information' },
+      de: { email: 'E-Mail', phone: 'Telefon', linkedin: 'LinkedIn', viewProfile: 'Profil ansehen', eventLabel: 'Wo haben wir uns getroffen?', eventPlaceholder: 'z.\u00a0B. Beispielveranstaltung', clearTitle: 'L\u00f6schen', saveContact: 'Kontakt speichern', metaPrefix: 'Digitale Visitenkarte', ariaEmail: 'E-Mail senden', ariaPhone: 'Anrufen', ariaLinkedin: 'LinkedIn-Profil \u00f6ffnen', ariaClear: 'Veranstaltungsfeld leeren', ariaSave: 'Kontakt als vCard speichern', ariaNav: 'Kontaktinformationen' },
+      fr: { email: 'E-mail', phone: 'T\u00e9l\u00e9phone', linkedin: 'LinkedIn', viewProfile: 'Voir le profil', eventLabel: 'O\u00f9 nous sommes-nous rencontr\u00e9s\u00a0?', eventPlaceholder: 'p. ex. \u00e9v\u00e9nement', clearTitle: 'Effacer', saveContact: 'Enregistrer le contact', metaPrefix: 'Carte de visite num\u00e9rique', ariaEmail: 'Envoyer un e-mail', ariaPhone: 'Appeler', ariaLinkedin: 'Ouvrir le profil LinkedIn', ariaClear: 'Effacer le champ', ariaSave: 'Enregistrer en tant que vCard', ariaNav: 'Coordonn\u00e9es' },
+      es: { email: 'Correo', phone: 'Tel\u00e9fono', linkedin: 'LinkedIn', viewProfile: 'Ver perfil', eventLabel: '\u00bfD\u00f3nde nos conocimos?', eventPlaceholder: 'p. ej. evento', clearTitle: 'Borrar', saveContact: 'Guardar contacto', metaPrefix: 'Tarjeta de visita digital', ariaEmail: 'Enviar correo', ariaPhone: 'Llamar', ariaLinkedin: 'Abrir perfil de LinkedIn', ariaClear: 'Borrar campo de evento', ariaSave: 'Guardar contacto como vCard', ariaNav: 'Informaci\u00f3n de contacto' },
+      pl: { email: 'E-mail', phone: 'Telefon', linkedin: 'LinkedIn', viewProfile: 'Zobacz profil', eventLabel: 'Gdzie si\u0119 spotkali\u015bmy?', eventPlaceholder: 'np. przyk\u0142adowe wydarzenie', clearTitle: 'Wyczy\u015b\u0107', saveContact: 'Zapisz kontakt', metaPrefix: 'Cyfrowa wizyt\u00f3wka', ariaEmail: 'Wy\u015blij e-mail', ariaPhone: 'Zadzwo\u0144', ariaLinkedin: 'Otw\u00f3rz profil LinkedIn', ariaClear: 'Wyczy\u015b\u0107 pole wydarzenia', ariaSave: 'Zapisz kontakt jako vCard', ariaNav: 'Dane kontaktowe' },
+    });
+    var LANG = (function () {
+      var langs = navigator.languages || [navigator.language || 'en'];
+      for (var i = 0; i < langs.length; i++) {
+        var code = langs[i].toLowerCase().split('-')[0];
+        if (TRANSLATIONS[code]) return code;
+      }
+      return 'en';
+    })();
+    function t(key) {
+      return (TRANSLATIONS[LANG] || TRANSLATIONS.en)[key] || TRANSLATIONS.en[key] || key;
+    }
+    document.documentElement.lang = LANG;
   </script>
 </head>
 <body>
@@ -412,44 +433,44 @@
       </div>
     </div>
     <!-- Contact Links -->
-    <nav class="contact-list" aria-label="Contact information">
+    <nav class="contact-list" aria-label="Contact information" data-i18n-aria-label="ariaNav">
       <!-- Email -->
-      <a href="#" id="contact-email" class="contact-item" aria-label="Send email">
+      <a href="#" id="contact-email" class="contact-item" aria-label="Send email" data-i18n-aria-label="ariaEmail">
         <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <rect x="2" y="4" width="20" height="16" rx="2"/>
           <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
         </svg>
         <div>
-          <span class="contact-label">Email</span>
+          <span class="contact-label" data-i18n="email">Email</span>
           <span class="contact-value"></span>
         </div>
       </a>
       <!-- Phone -->
-      <a href="#" id="contact-phone" class="contact-item" aria-label="Call">
+      <a href="#" id="contact-phone" class="contact-item" aria-label="Call" data-i18n-aria-label="ariaPhone">
         <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
         </svg>
         <div>
-          <span class="contact-label">Phone</span>
+          <span class="contact-label" data-i18n="phone">Phone</span>
           <span class="contact-value"></span>
         </div>
       </a>
       <!-- LinkedIn -->
-      <a href="#" id="contact-linkedin" class="contact-item" target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn profile">
+      <a href="#" id="contact-linkedin" class="contact-item" target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn profile" data-i18n-aria-label="ariaLinkedin">
         <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
           <rect x="2" y="9" width="4" height="12"/>
           <circle cx="4" cy="4" r="2"/>
         </svg>
         <div>
-          <span class="contact-label">LinkedIn</span>
-          <span class="contact-value">View profile</span>
+          <span class="contact-label" data-i18n="linkedin">LinkedIn</span>
+          <span class="contact-value" data-i18n="viewProfile">View profile</span>
         </div>
       </a>
     </nav>
     <!-- Event Context -->
     <div class="event-section">
-      <label class="event-label" for="event-input">Where did we meet?</label>
+      <label class="event-label" for="event-input" data-i18n="eventLabel">Where did we meet?</label>
       <div class="event-input-row" id="event-input-row">
         <svg class="event-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
@@ -460,22 +481,23 @@
           id="event-input"
           class="event-input"
           placeholder="e.g. sample event"
+          data-i18n-placeholder="eventPlaceholder"
           maxlength="120"
           autocomplete="off"
         />
-        <button class="event-clear" id="event-clear" aria-label="Clear event field" title="Clear">&times;</button>
+        <button class="event-clear" id="event-clear" aria-label="Clear event field" title="Clear" data-i18n-aria-label="ariaClear" data-i18n-title="clearTitle">&times;</button>
       </div>
     </div>
     <!-- Save Contact -->
     <div class="actions">
-      <button class="btn-save" id="btn-save" aria-label="Save contact as vCard">
+      <button class="btn-save" id="btn-save" aria-label="Save contact as vCard" data-i18n-aria-label="ariaSave">
         <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
           <circle cx="9" cy="7" r="4"/>
           <line x1="19" y1="8" x2="19" y2="14"/>
           <line x1="22" y1="11" x2="16" y2="11"/>
         </svg>
-        Save contact
+        <span data-i18n="saveContact">Save contact</span>
       </button>
     </div>
     <!-- Footer -->
@@ -502,7 +524,7 @@
       var ogDesc = document.querySelector('meta[property="og:description"]');
       if (ogDesc) ogDesc.setAttribute('content', CONTACT.title);
       var metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) metaDesc.setAttribute('content', 'Digital Business Card \u2014 ' + CONTACT.title);
+      if (metaDesc) metaDesc.setAttribute('content', t('metaPrefix') + ' \u2014 ' + CONTACT.title);
       document.getElementById('contact-name').textContent = fullName;
       document.getElementById('contact-title').textContent = CONTACT.title;
       var emailEl = document.getElementById('contact-email');
@@ -514,6 +536,19 @@
       var linkedinEl = document.getElementById('contact-linkedin');
       linkedinEl.href = CONTACT.linkedin;
       document.getElementById('avatar-img').alt = fullName;
+    })();
+    // ── Apply translations ──
+    (function translatePage() {
+      var els = document.querySelectorAll('[data-i18n]');
+      for (var i = 0; i < els.length; i++) {
+        els[i].textContent = t(els[i].getAttribute('data-i18n'));
+      }
+      ['aria-label', 'title', 'placeholder'].forEach(function (attr) {
+        var nodes = document.querySelectorAll('[data-i18n-' + attr + ']');
+        for (var j = 0; j < nodes.length; j++) {
+          nodes[j].setAttribute(attr, t(nodes[j].getAttribute('data-i18n-' + attr)));
+        }
+      });
     })();
     // ── DOM refs ──
     var eventInput = document.getElementById('event-input');
