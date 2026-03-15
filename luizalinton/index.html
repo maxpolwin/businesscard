@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Luiza Linton — agradblue°</title>
-  <meta name="description" content="Digital Business Card — Senior Consultant">
+  <title>Loading…</title>
+  <meta name="description" content="">
   <meta name="robots" content="noindex, nofollow">
   <!-- No external tracking, no cookies, no analytics — privacy first -->
   <!-- Open Graph for link previews -->
-  <meta property="og:title" content="Luiza Linton — agradblue°">
-  <meta property="og:description" content="Managing Director">
+  <meta property="og:title" content="">
+  <meta property="og:description" content="">
   <meta property="og:type" content="profile">
   <style>
     /* ── Reset & Base ── */
@@ -334,6 +334,24 @@
       .card { border-color: rgba(255, 255, 255, 0.3); }
     }
   </style>
+  <script>
+    // ── Contact data (single source of truth — edit only here) ──
+    var CONTACT = Object.freeze({
+      firstName: 'Luiza',
+      lastName: 'Linton',
+      org: 'agradblue GmbH (part of Westbridge)',
+      title: 'Managing Director',
+      email: 'luiza.linton@agradblue.com',
+      displayPhone: '+49 172 796 3362',
+      rawPhone: '+491727963362',
+      linkedin: 'https://www.linkedin.com/in/luiza-linton/',
+      url: 'https://agradblue.com',
+      street: 'Barckhausstrasse 12-14',
+      city: 'Frankfurt am Main',
+      zip: '60325',
+      country: 'Germany',
+    });
+  </script>
 </head>
 <body>
   <!-- Animated background blob -->
@@ -362,39 +380,39 @@
         <!-- Contact Photo: replace src with your photo (JPEG, ~200×200px) -->
         <!-- Default: agradblue logo fallback -->
         <div class="avatar" id="avatar">
-          <img id="avatar-img" src="photo.jpg" alt="Luiza Linton" />
+          <img id="avatar-img" src="photo.jpg" alt="" />
         </div>
         <div class="card-header-info">
-          <h1 class="name">Luiza Linton</h1>
-          <p class="title">Managing Director</p>
+          <h1 class="name" id="contact-name"></h1>
+          <p class="title" id="contact-title"></p>
         </div>
       </div>
     </div>
     <!-- Contact Links -->
     <nav class="contact-list" aria-label="Contact information">
       <!-- Email -->
-      <a href="mailto:luiza.linton@agradblue.com" class="contact-item" aria-label="Send email">
+      <a href="#" id="contact-email" class="contact-item" aria-label="Send email">
         <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <rect x="2" y="4" width="20" height="16" rx="2"/>
           <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
         </svg>
         <div>
           <span class="contact-label">Email</span>
-          <span class="contact-value">luiza.linton@agradblue.com</span>
+          <span class="contact-value"></span>
         </div>
       </a>
       <!-- Phone -->
-      <a href="tel:+491727963362" class="contact-item" aria-label="Call">
+      <a href="#" id="contact-phone" class="contact-item" aria-label="Call">
         <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
         </svg>
         <div>
           <span class="contact-label">Phone</span>
-          <span class="contact-value">+49 172 796 3362</span>
+          <span class="contact-value"></span>
         </div>
       </a>
       <!-- LinkedIn -->
-      <a href="https://www.linkedin.com/in/luiza-linton/" class="contact-item" target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn profile">
+      <a href="#" id="contact-linkedin" class="contact-item" target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn profile">
         <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
           <rect x="2" y="9" width="4" height="12"/>
@@ -452,21 +470,28 @@
      *
      * Privacy: All processing happens client-side. No data is sent anywhere.
      */
-    // ── Contact data (⚠️ TODO: replace with real values) ──
-    var CONTACT = Object.freeze({
-      firstName: 'Luiza',
-      lastName: 'Linton',
-      org: 'agradblue GmbH (part of Westbridge)',
-      title: 'Managing Director',
-      email: 'luiza.linton@agradblue.com',
-      phone: '+49 172 796 3362',
-      linkedin: 'https://www.linkedin.com/in/luiza-linton/',
-      url: 'https://agradblue.com',
-      street: 'Barckhausstrasse 12-14',
-      city: 'Frankfurt am Main',
-      zip: '60325',
-      country: 'Germany',
-    });
+    // ── Populate page from CONTACT (defined in <head>) ──
+    (function populatePage() {
+      var fullName = CONTACT.displayName || (CONTACT.firstName + ' ' + CONTACT.lastName);
+      document.title = fullName + ' \u2014 agradblue\u00b0';
+      var ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle) ogTitle.setAttribute('content', fullName + ' \u2014 agradblue\u00b0');
+      var ogDesc = document.querySelector('meta[property="og:description"]');
+      if (ogDesc) ogDesc.setAttribute('content', CONTACT.title);
+      var metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) metaDesc.setAttribute('content', 'Digital Business Card \u2014 ' + CONTACT.title);
+      document.getElementById('contact-name').textContent = fullName;
+      document.getElementById('contact-title').textContent = CONTACT.title;
+      var emailEl = document.getElementById('contact-email');
+      emailEl.href = 'mailto:' + CONTACT.email;
+      emailEl.querySelector('.contact-value').textContent = CONTACT.email;
+      var phoneEl = document.getElementById('contact-phone');
+      phoneEl.href = 'tel:' + CONTACT.rawPhone;
+      phoneEl.querySelector('.contact-value').textContent = CONTACT.displayPhone;
+      var linkedinEl = document.getElementById('contact-linkedin');
+      linkedinEl.href = CONTACT.linkedin;
+      document.getElementById('avatar-img').alt = fullName;
+    })();
     // ── DOM refs ──
     var eventInput = document.getElementById('event-input');
     var eventInputRow = document.getElementById('event-input-row');
@@ -546,7 +571,7 @@
         'FN:' + escapeVCard(CONTACT.firstName + ' ' + CONTACT.lastName),
         'ORG:' + escapeVCard(CONTACT.org),
         'TITLE:' + escapeVCard(CONTACT.title),
-        'TEL;TYPE=WORK,VOICE:' + CONTACT.phone,
+        'TEL;TYPE=WORK,VOICE:' + CONTACT.displayPhone,
         'EMAIL;TYPE=WORK:' + CONTACT.email,
         'URL:' + CONTACT.linkedin,
         'URL:' + CONTACT.url,
