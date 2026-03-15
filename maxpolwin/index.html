@@ -38,7 +38,7 @@
     }
     body {
       font-family: var(--font-body);
-      background: linear-gradient(160deg, var(--navy) 0%, #1A2B2E 50%, #1A2B2E 100%);
+      background: linear-gradient(160deg, var(--navy) 0%, var(--navy) 50%, var(--navy) 100%);
       color: var(--text);
       min-height: 100vh;
       display: flex;
@@ -351,6 +351,28 @@
       zip: '60325',
       country: 'Germany',
     });
+
+    // ── Color settings (edit here to change the card's palette) ──
+    var THEME = Object.freeze({
+      navy:        '#1A2B2E',   // page background
+      navyLight:   '#224955',   // lighter navy variant
+      accent:      '#599AAB',   // primary accent (buttons, links)
+      accentHover: '#224955',   // accent hover state
+      green:       '#499466',   // secondary accent (gradient)
+      text:        '#F0F4F8',   // main text color
+      textMuted:   '#8A8794',   // secondary text color
+    });
+    // Apply theme colors to CSS variables
+    (function applyTheme() {
+      var s = document.documentElement.style;
+      s.setProperty('--navy', THEME.navy);
+      s.setProperty('--navy-light', THEME.navyLight);
+      s.setProperty('--accent', THEME.accent);
+      s.setProperty('--accent-hover', THEME.accentHover);
+      s.setProperty('--green', THEME.green);
+      s.setProperty('--text', THEME.text);
+      s.setProperty('--text-muted', THEME.textMuted);
+    })();
   </script>
 </head>
 <body>
