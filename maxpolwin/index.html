@@ -1,5 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+<script>
+  /**
+   * ══════════════════════════════════════════════════════
+   *  PROFILE CONFIG — edit ONLY this section
+   * ══════════════════════════════════════════════════════
+   */
+  var CONTACT = Object.freeze({
+    firstName: 'Max',
+    lastName:  'Polwin',
+    org:       'agradblue GmbH (part of Westbridge)',
+    title:     'Senior Consultant',
+    email:     'max.polwin@agradblue.com',
+    phone:     '+49 173 588 48 17',
+    linkedin:  'https://www.linkedin.com/in/maxpolwin/',
+    url:       'https://agradblue.com',
+    street:    'Barckhausstrasse 12-14',
+    city:      'Frankfurt am Main',
+    zip:       '60325',
+    country:   'Germany',
+    photo:     'photo.jpg',
+    footerOrg: ' ',
+    showFooter: false,
+  });
+</script>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -336,30 +360,6 @@
   </style>
 </head>
 <body>
-  <script>
-    /**
-     * ══════════════════════════════════════════════════════
-     *  PROFILE CONFIG — edit ONLY this section
-     * ══════════════════════════════════════════════════════
-     */
-    var CONTACT = Object.freeze({
-      firstName: 'Max',
-      lastName:  'Polwin',
-      org:       'agradblue GmbH (part of Westbridge)',
-      title:     'Senior Consultant',
-      email:     'max.polwin@agradblue.com',
-      phone:     '+49 173 588 48 17',
-      linkedin:  'https://www.linkedin.com/in/maxpolwin/',
-      url:       'https://agradblue.com',
-      street:    'Barckhausstrasse 12-14',
-      city:      'Frankfurt am Main',
-      zip:       '60325',
-      country:   'Germany',
-      photo:     'photo.jpg',
-      footerOrg: ' ',
-    });
-  </script>
-
   <!-- Animated background blob -->
   <div class="bg-blob"></div>
 
@@ -495,8 +495,13 @@
       document.getElementById('link-linkedin').href = C.linkedin;
 
       // Footer
-      document.getElementById('display-footer').textContent =
-        C.footerOrg + ' · ' + C.street + ' · ' + C.zip + ' ' + C.city;
+      var footerEl = document.querySelector('.card-footer');
+      if (C.showFooter) {
+        document.getElementById('display-footer').textContent =
+          C.footerOrg + ' · ' + C.street + ' · ' + C.zip + ' ' + C.city;
+      } else {
+        footerEl.style.display = 'none';
+      }
     })();
 
     /**
