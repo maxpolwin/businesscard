@@ -376,6 +376,7 @@
         <div class="card-header-info">
           <h1 class="name" id="display-name"></h1>
           <p class="title" id="display-title"></p>
+          <p class="title" id="display-org"></p>
         </div>
       </div>
     </div>
@@ -474,6 +475,7 @@
       // Header
       document.getElementById('display-name').textContent = fullName;
       document.getElementById('display-title').textContent = C.title;
+      document.getElementById('display-org').textContent = C.org;
 
       // Avatar
       var avatarImg = document.getElementById('avatar-img');
