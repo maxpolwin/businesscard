@@ -356,6 +356,7 @@
       zip:       '60325',
       country:   'Germany',
       photo:     'photo.jpg',
+      footerOrg: 'agradblue° GmbH',
     });
   </script>
 
@@ -375,6 +376,7 @@
         <div class="card-header-info">
           <h1 class="name" id="display-name"></h1>
           <p class="title" id="display-title"></p>
+          <p class="title" id="display-org"></p>
         </div>
       </div>
     </div>
@@ -461,18 +463,19 @@
       var fullName = C.firstName + ' ' + C.lastName;
 
       // Meta tags & page title
-      document.title = fullName + ' — ' + C.org.split(' (')[0] + '°';
+      document.title = fullName + ' — ' + C.footerOrg;
       var setMeta = function (attr, val, content) {
         var el = document.querySelector('meta[' + attr + '="' + val + '"]');
         if (el) el.setAttribute('content', content);
       };
       setMeta('name', 'description', 'Digital Business Card — ' + C.title);
-      setMeta('property', 'og:title', fullName + ' — ' + C.org.split(' (')[0] + '°');
+      setMeta('property', 'og:title', fullName + ' — ' + C.footerOrg);
       setMeta('property', 'og:description', C.title);
 
       // Header
       document.getElementById('display-name').textContent = fullName;
       document.getElementById('display-title').textContent = C.title;
+      document.getElementById('display-org').textContent = C.org;
 
       // Avatar
       var avatarImg = document.getElementById('avatar-img');
@@ -493,7 +496,7 @@
 
       // Footer
       document.getElementById('display-footer').textContent =
-        C.org.split(' (')[0] + '° · ' + C.street + ' · ' + C.zip + ' ' + C.city;
+        C.footerOrg + ' · ' + C.street + ' · ' + C.zip + ' ' + C.city;
     })();
 
     /**
