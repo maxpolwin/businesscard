@@ -356,6 +356,7 @@
       zip:       '60325',
       country:   'Germany',
       photo:     'photo.jpg',
+      footerOrg: 'agradblue° GmbH',
     });
   </script>
 
@@ -461,13 +462,13 @@
       var fullName = C.firstName + ' ' + C.lastName;
 
       // Meta tags & page title
-      document.title = fullName + ' — ' + C.org.split(' (')[0] + '°';
+      document.title = fullName + ' — ' + C.footerOrg;
       var setMeta = function (attr, val, content) {
         var el = document.querySelector('meta[' + attr + '="' + val + '"]');
         if (el) el.setAttribute('content', content);
       };
       setMeta('name', 'description', 'Digital Business Card — ' + C.title);
-      setMeta('property', 'og:title', fullName + ' — ' + C.org.split(' (')[0] + '°');
+      setMeta('property', 'og:title', fullName + ' — ' + C.footerOrg);
       setMeta('property', 'og:description', C.title);
 
       // Header
@@ -493,7 +494,7 @@
 
       // Footer
       document.getElementById('display-footer').textContent =
-        C.org.split(' (')[0] + '° · ' + C.street + ' · ' + C.zip + ' ' + C.city;
+        C.footerOrg + ' · ' + C.street + ' · ' + C.zip + ' ' + C.city;
     })();
 
     /**
