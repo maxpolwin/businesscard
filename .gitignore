@@ -1,0 +1,5 @@
+certs/
+output/
+.env
+*.pkpass
+.DS_Store
