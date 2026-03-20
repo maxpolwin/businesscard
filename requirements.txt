@@ -1,0 +1,2 @@
+py-pkpass
+python-dotenv
