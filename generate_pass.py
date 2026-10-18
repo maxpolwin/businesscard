@@ -123,6 +123,10 @@ def generate_pass(config_name: str | None = None, no_logo: bool = False) -> None
     # --- Build pass content ---
     card_info = Generic()
 
+    # Primary / secondary: name and title on the front of the card
+    card_info.addPrimaryField("name", env["CONTACT_NAME"], "")
+    card_info.addSecondaryField("title", env["CONTACT_TITLE"], "")
+
     # Auxiliary: Contact details
     card_info.addAuxiliaryField("email", env["CONTACT_EMAIL"], "EMAIL")
     card_info.addAuxiliaryField("phone", env["CONTACT_PHONE"], "PHONE")
@@ -146,13 +150,14 @@ def generate_pass(config_name: str | None = None, no_logo: bool = False) -> None
 
     # Unique serial per person (based on config name or contact name)
     serial_slug = config_name or env["CONTACT_NAME"].lower().replace(" ", "-")
-    passfile.serialNumber = f"agradblue-card-{serial_slug}"
+    passfile.serialNumber = f"card-{serial_slug}"
     passfile.description = f"Business Card — {env['CONTACT_NAME']}"
 
     # Colors: match landing page background
-    passfile.backgroundColor = "rgb(26, 43, 46)"        # #1A2B2E (same as landing page)
-    passfile.foregroundColor = "rgb(255, 255, 255)"     # White text
-    passfile.labelColor = "rgb(108, 180, 188)"          # agradblue cadetblue (#6CB4BC)
+    # Overridable per config via PASS_BG / PASS_FG / PASS_LABEL ("R, G, B")
+    passfile.backgroundColor = f"rgb({os.getenv('PASS_BG', '26, 43, 46')})"       # #1A2B2E
+    passfile.foregroundColor = f"rgb({os.getenv('PASS_FG', '255, 255, 255')})"    # White text
+    passfile.labelColor = f"rgb({os.getenv('PASS_LABEL', '108, 180, 188')})"      # #6CB4BC
 
     # QR Code pointing to landing page
     passfile.barcode = Barcode(
@@ -207,7 +212,7 @@ def generate_pass(config_name: str | None = None, no_logo: bool = False) -> None
 
     # --- Sign and generate .pkpass ---
     OUTPUT_DIR.mkdir(exist_ok=True)
-    name_slug = env["CONTACT_NAME"].lower().replace(" ", "-")
+    name_slug = config_name or env["CONTACT_NAME"].lower().replace(" ", "-")
     output_path = OUTPUT_DIR / f"{name_slug}.pkpass"
 
     logger.info("Signing pass with certificate...")

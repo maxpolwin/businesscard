@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>Farboptionen Visitenkarte</title>
+<style>
+*{box-sizing:border-box;margin:0}
+body{font:15px/1.5 -apple-system,system-ui,sans-serif;background:#0b0d10;color:#eef1f6;padding:24px}
+h1{font-size:1.4rem;margin-bottom:.3rem} .lead{color:#98a1b0;margin-bottom:1.5rem;max-width:70ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
+.opt{background:#14171c;border:1px solid #ffffff1a;border-radius:16px;padding:16px}
+.opt h2{font-size:1.05rem} .d{color:#98a1b0;font-size:.85rem;margin-bottom:12px}
+.card{position:relative;overflow:hidden;background:var(--bg);color:var(--tx);border-radius:16px;padding:18px;border:1px solid #ffffff22}
+.blob{position:absolute;width:260px;height:260px;right:-90px;top:-90px;border-radius:50%;background:linear-gradient(135deg,var(--ac),var(--bl));opacity:.18;filter:blur(30px)}
+.card>*:not(.blob){position:relative}
+.row0{display:flex;gap:12px;align-items:center;margin-bottom:14px}
+.row0 img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid var(--ac)}
+.row0 b{display:block;font-size:1.15rem} .row0 span{font-size:.78rem;color:var(--mu);display:block;line-height:1.35}
+.item{display:flex;gap:10px;align-items:center;padding:8px 10px;border:1px solid #ffffff1a;border-radius:10px;margin-bottom:8px;font-size:.85rem;background:#ffffff0a}
+.light .item{background:#0000000a}
+.item i{font-style:normal;color:var(--ac);width:20px;text-align:center} .item small{display:block;color:var(--mu);font-size:.68rem;text-transform:uppercase;letter-spacing:.05em}
+.btn{margin-top:10px;text-align:center;padding:10px;border-radius:10px;font-weight:600;background:linear-gradient(90deg,var(--ac),var(--bl));color:var(--bg)}
+.pass{margin-top:12px;background:var(--bg);color:var(--tx);border-radius:14px;padding:14px;border:1px solid #ffffff22;font-size:.8rem}
+.pass b{display:block;font-size:1.2rem} .pass span{display:block;color:var(--tx);margin-bottom:8px}
+.pass small{display:block;color:var(--ac);font-size:.62rem;letter-spacing:.06em} .pass em{font-style:normal;display:block;margin-bottom:4px}
+table{width:100%;margin-top:12px;font-size:.78rem;border-collapse:collapse} td{padding:3px 4px;border-top:1px solid #ffffff14;color:#c3cad6}
+code{background:#ffffff14;padding:1px 5px;border-radius:4px}
+</style></head><body>
+<h1>Farboptionen: Landingpage und Apple Wallet</h1>
+<p class="lead">Aktuell (Option 0) plus 8 Alternativen, abgeleitet aus den Farben von maxpolwin.com (Ink #14171C, Gold #E6C34A, Teal und Sky aus der Primär-/Sekundärpalette). Jede Option zeigt Landingpage-Karte und Wallet-Pass. Die Werte rechts gehören in <code>configs/max-polwin-freelance.env</code>.</p>
+<div class="grid">
+<article class="opt" style="--bg:#1A2B2E;--tx:#F0F4F8;--ac:#599AAB;--bl:#499466;--mu:#8A8794">
+  <h2>Aktuell: Aktuell</h2>
+  <p class="d">Teal Navy (bisherige agradblue-Palette)</p>
+  <div class="card">
+    <div class="blob"></div>
+    <div class="row0"><img src="../maxpolwin/photo.jpg" alt=""><div><b>Max Polwin</b><span>Freelance IT Project &amp; Product Manager | ESG Consultant</span></div></div>
+    <div class="item"><i>✉</i><div><small>Email</small>max.polwin@protonmail.com</div></div>
+    <div class="item"><i>☎</i><div><small>Phone</small>+49 151 29902061</div></div>
+    <div class="item"><i>in</i><div><small>LinkedIn</small>View profile</div></div>
+    <div class="btn">Save contact</div>
+  </div>
+  <div class="pass"><b>Max Polwin</b><span>Freelance IT Project &amp; Product Manager | ESG Consultant</span><small>EMAIL</small><em>max.polwin@protonmail.com</em><small>PHONE</small><em>+49 151 29902061</em></div>
+  <table>
+    <tr><td>Hintergrund</td><td><code>#1A2B2E</code></td><td>PASS_BG=26, 43, 46</td></tr>
+    <tr><td>Akzent / Label</td><td><code>#599AAB</code></td><td>PASS_LABEL=89, 154, 171</td></tr>
+    <tr><td>Text</td><td><code>#F0F4F8</code></td><td>PASS_FG=240, 244, 248</td></tr>
+    <tr><td>Kontrast</td><td colspan="2">Text 13.3:1 · Akzent 4.6:1 · Gedämpft 4.2:1 (unter 4.5, WCAG AA)</td></tr>
+  </table>
+</article>
+<article class="opt" style="--bg:#14171C;--tx:#EEF1F6;--ac:#E6C34A;--bl:#E6C34A;--mu:#98A1B0">
+  <h2>Option 1: Ink &amp; Gold</h2>
+  <p class="d">Dunkles Theme von maxpolwin.com, Gold-Akzent</p>
+  <div class="card">
+    <div class="blob"></div>
+    <div class="row0"><img src="../maxpolwin/photo.jpg" alt=""><div><b>Max Polwin</b><span>Freelance IT Project &amp; Product Manager | ESG Consultant</span></div></div>
+    <div class="item"><i>✉</i><div><small>Email</small>max.polwin@protonmail.com</div></div>
+    <div class="item"><i>☎</i><div><small>Phone</small>+49 151 29902061</div></div>
+    <div class="item"><i>in</i><div><small>LinkedIn</small>View profile</div></div>
+    <div class="btn">Save contact</div>
+  </div>
+  <div class="pass"><b>Max Polwin</b><span>Freelance IT Project &amp; Product Manager | ESG Consultant</span><small>EMAIL</small><em>max.polwin@protonmail.com</em><small>PHONE</small><em>+49 151 29902061</em></div>
+  <table>
+    <tr><td>Hintergrund</td><td><code>#14171C</code></td><td>PASS_BG=20, 23, 28</td></tr>
+    <tr><td>Akzent / Label</td><td><code>#E6C34A</code></td><td>PASS_LABEL=230, 195, 74</td></tr>
+    <tr><td>Text</td><td><code>#EEF1F6</code></td><td>PASS_FG=238, 241, 246</td></tr>
+    <tr><td>Kontrast</td><td colspan="2">Text 15.9:1 · Akzent 10.5:1 · Gedämpft 6.9:1 </td></tr>
+  </table>
+</article>
+<article class="opt" style="--bg:#F7F8FA;--tx:#14171C;--ac:#7A5E12;--bl:#96782D;--mu:#5A6270">
+  <h2>Option 2: Paper &amp; Bronze</h2>
+  <p class="d">Helles Theme von maxpolwin.com</p>
+  <div class="card">
+    <div class="blob"></div>
+    <div class="row0"><img src="../maxpolwin/photo.jpg" alt=""><div><b>Max Polwin</b><span>Freelance IT Project &amp; Product Manager | ESG Consultant</span></div></div>
+    <div class="item"><i>✉</i><div><small>Email</small>max.polwin@protonmail.com</div></div>
+    <div class="item"><i>☎</i><div><small>Phone</small>+49 151 29902061</div></div>
+    <div class="item"><i>in</i><div><small>LinkedIn</small>View profile</div></div>
+    <div class="btn">Save contact</div>
+  </div>
+  <div class="pass"><b>Max Polwin</b><span>Freelance IT Project &amp; Product Manager | ESG Consultant</span><small>EMAIL</small><em>max.polwin@protonmail.com</em><small>PHONE</small><em>+49 151 29902061</em></div>
+  <table>
+    <tr><td>Hintergrund</td><td><code>#F7F8FA</code></td><td>PASS_BG=247, 248, 250</td></tr>
+    <tr><td>Akzent / Label</td><td><code>#7A5E12</code></td><td>PASS_LABEL=122, 94, 18</td></tr>
+    <tr><td>Text</td><td><code>#14171C</code></td><td>PASS_FG=20, 23, 28</td></tr>
+    <tr><td>Kontrast</td><td colspan="2">Text 16.9:1 · Akzent 5.7:1 · Gedämpft 5.8:1 </td></tr>
+  </table>
+</article>
+<article class="opt" style="--bg:#14171C;--tx:#EEF1F6;--ac:#2DD4BF;--bl:#14B8A6;--mu:#98A1B0">
+  <h2>Option 3: Ink &amp; Teal</h2>
+  <p class="d">Site-Hintergrund, Primärfarbe Teal</p>
+  <div class="card">
+    <div class="blob"></div>
+    <div class="row0"><img src="../maxpolwin/photo.jpg" alt=""><div><b>Max Polwin</b><span>Freelance IT Project &amp; Product Manager | ESG Consultant</span></div></div>
+    <div class="item"><i>✉</i><div><small>Email</small>max.polwin@protonmail.com</div></div>
+    <div class="item"><i>☎</i><div><small>Phone</small>+49 151 29902061</div></div>
+    <div class="item"><i>in</i><div><small>LinkedIn</small>View profile</div></div>
+    <div class="btn">Save contact</div>
+  </div>
+  <div class="pass"><b>Max Polwin</b><span>Freelance IT Project &amp; Product Manager | ESG Consultant</span><small>EMAIL</small><em>max.polwin@protonmail.com</em><small>PHONE</small><em>+49 151 29902061</em></div>
+  <table>
+    <tr><td>Hintergrund</td><td><code>#14171C</code></td><td>PASS_BG=20, 23, 28</td></tr>
+    <tr><td>Akzent / Label</td><td><code>#2DD4BF</code></td><td>PASS_LABEL=45, 212, 191</td></tr>
+    <tr><td>Text</td><td><code>#EEF1F6</code></td><td>PASS_FG=238, 241, 246</td></tr>
+    <tr><td>Kontrast</td><td colspan="2">Text 15.9:1 · Akzent 9.6:1 · Gedämpft 6.9:1 </td></tr>
+  </table>
+</article>
+<article class="opt" style="--bg:#042F2E;--tx:#F0FDFA;--ac:#2DD4BF;--bl:#0D9488;--mu:#99B5B2">
+  <h2>Option 4: Deep Teal</h2>
+  <p class="d">Site-Primärfarbe tief (teal-950)</p>
+  <div class="card">
+    <div class="blob"></div>
+    <div class="row0"><img src="../maxpolwin/photo.jpg" alt=""><div><b>Max Polwin</b><span>Freelance IT Project &amp; Product Manager | ESG Consultant</span></div></div>
+    <div class="item"><i>✉</i><div><small>Email</small>max.polwin@protonmail.com</div></div>
+    <div class="item"><i>☎</i><div><small>Phone</small>+49 151 29902061</div></div>
+    <div class="item"><i>in</i><div><small>LinkedIn</small>View profile</div></div>
+    <div class="btn">Save contact</div>
+  </div>
+  <div class="pass"><b>Max Polwin</b><span>Freelance IT Project &amp; Product Manager | ESG Consultant</span><small>EMAIL</small><em>max.polwin@protonmail.com</em><small>PHONE</small><em>+49 151 29902061</em></div>
+  <table>
+    <tr><td>Hintergrund</td><td><code>#042F2E</code></td><td>PASS_BG=4, 47, 46</td></tr>
+    <tr><td>Akzent / Label</td><td><code>#2DD4BF</code></td><td>PASS_LABEL=45, 212, 191</td></tr>
+    <tr><td>Text</td><td><code>#F0FDFA</code></td><td>PASS_FG=240, 253, 250</td></tr>
+    <tr><td>Kontrast</td><td colspan="2">Text 13.9:1 · Akzent 7.8:1 · Gedämpft 6.6:1 </td></tr>
+  </table>
+</article>
+<article class="opt" style="--bg:#082F49;--tx:#F0F9FF;--ac:#38BDF8;--bl:#0284C7;--mu:#9DB4C6">
+  <h2>Option 5: Deep Sky</h2>
+  <p class="d">Site-Sekundärfarbe (sky-950)</p>
+  <div class="card">
+    <div class="blob"></div>
+    <div class="row0"><img src="../maxpolwin/photo.jpg" alt=""><div><b>Max Polwin</b><span>Freelance IT Project &amp; Product Manager | ESG Consultant</span></div></div>
+    <div class="item"><i>✉</i><div><small>Email</small>max.polwin@protonmail.com</div></div>
+    <div class="item"><i>☎</i><div><small>Phone</small>+49 151 29902061</div></div>
+    <div class="item"><i>in</i><div><small>LinkedIn</small>View profile</div></div>
+    <div class="btn">Save contact</div>
+  </div>
+  <div class="pass"><b>Max Polwin</b><span>Freelance IT Project &amp; Product Manager | ESG Consultant</span><small>EMAIL</small><em>max.polwin@protonmail.com</em><small>PHONE</small><em>+49 151 29902061</em></div>
+  <table>
+    <tr><td>Hintergrund</td><td><code>#082F49</code></td><td>PASS_BG=8, 47, 73</td></tr>
+    <tr><td>Akzent / Label</td><td><code>#38BDF8</code></td><td>PASS_LABEL=56, 189, 248</td></tr>
+    <tr><td>Text</td><td><code>#F0F9FF</code></td><td>PASS_FG=240, 249, 255</td></tr>
+    <tr><td>Kontrast</td><td colspan="2">Text 13.0:1 · Akzent 6.5:1 · Gedämpft 6.5:1 </td></tr>
+  </table>
+</article>
+<article class="opt" style="--bg:#0F172A;--tx:#F1F5F9;--ac:#E6C34A;--bl:#B8962E;--mu:#94A3B8">
+  <h2>Option 6: Slate &amp; Gold</h2>
+  <p class="d">Slate-Header der Site, Gold</p>
+  <div class="card">
+    <div class="blob"></div>
+    <div class="row0"><img src="../maxpolwin/photo.jpg" alt=""><div><b>Max Polwin</b><span>Freelance IT Project &amp; Product Manager | ESG Consultant</span></div></div>
+    <div class="item"><i>✉</i><div><small>Email</small>max.polwin@protonmail.com</div></div>
+    <div class="item"><i>☎</i><div><small>Phone</small>+49 151 29902061</div></div>
+    <div class="item"><i>in</i><div><small>LinkedIn</small>View profile</div></div>
+    <div class="btn">Save contact</div>
+  </div>
+  <div class="pass"><b>Max Polwin</b><span>Freelance IT Project &amp; Product Manager | ESG Consultant</span><small>EMAIL</small><em>max.polwin@protonmail.com</em><small>PHONE</small><em>+49 151 29902061</em></div>
+  <table>
+    <tr><td>Hintergrund</td><td><code>#0F172A</code></td><td>PASS_BG=15, 23, 42</td></tr>
+    <tr><td>Akzent / Label</td><td><code>#E6C34A</code></td><td>PASS_LABEL=230, 195, 74</td></tr>
+    <tr><td>Text</td><td><code>#F1F5F9</code></td><td>PASS_FG=241, 245, 249</td></tr>
+    <tr><td>Kontrast</td><td colspan="2">Text 16.3:1 · Akzent 10.4:1 · Gedämpft 7.0:1 </td></tr>
+  </table>
+</article>
+<article class="opt" style="--bg:#14171C;--tx:#EEF1F6;--ac:#2DD4BF;--bl:#E6C34A;--mu:#98A1B0">
+  <h2>Option 7: Ink Teal + Gold</h2>
+  <p class="d">Teal-Label, Gold als Highlight</p>
+  <div class="card">
+    <div class="blob"></div>
+    <div class="row0"><img src="../maxpolwin/photo.jpg" alt=""><div><b>Max Polwin</b><span>Freelance IT Project &amp; Product Manager | ESG Consultant</span></div></div>
+    <div class="item"><i>✉</i><div><small>Email</small>max.polwin@protonmail.com</div></div>
+    <div class="item"><i>☎</i><div><small>Phone</small>+49 151 29902061</div></div>
+    <div class="item"><i>in</i><div><small>LinkedIn</small>View profile</div></div>
+    <div class="btn">Save contact</div>
+  </div>
+  <div class="pass"><b>Max Polwin</b><span>Freelance IT Project &amp; Product Manager | ESG Consultant</span><small>EMAIL</small><em>max.polwin@protonmail.com</em><small>PHONE</small><em>+49 151 29902061</em></div>
+  <table>
+    <tr><td>Hintergrund</td><td><code>#14171C</code></td><td>PASS_BG=20, 23, 28</td></tr>
+    <tr><td>Akzent / Label</td><td><code>#2DD4BF</code></td><td>PASS_LABEL=45, 212, 191</td></tr>
+    <tr><td>Text</td><td><code>#EEF1F6</code></td><td>PASS_FG=238, 241, 246</td></tr>
+    <tr><td>Kontrast</td><td colspan="2">Text 15.9:1 · Akzent 9.6:1 · Gedämpft 6.9:1 </td></tr>
+  </table>
+</article>
+<article class="opt" style="--bg:#0C4A6E;--tx:#F0F9FF;--ac:#5EEAD4;--bl:#38BDF8;--mu:#A9C3D3">
+  <h2>Option 8: Teal to Sky</h2>
+  <p class="d">Verlauf aus Primär und Sekundär der Site</p>
+  <div class="card">
+    <div class="blob"></div>
+    <div class="row0"><img src="../maxpolwin/photo.jpg" alt=""><div><b>Max Polwin</b><span>Freelance IT Project &amp; Product Manager | ESG Consultant</span></div></div>
+    <div class="item"><i>✉</i><div><small>Email</small>max.polwin@protonmail.com</div></div>
+    <div class="item"><i>☎</i><div><small>Phone</small>+49 151 29902061</div></div>
+    <div class="item"><i>in</i><div><small>LinkedIn</small>View profile</div></div>
+    <div class="btn">Save contact</div>
+  </div>
+  <div class="pass"><b>Max Polwin</b><span>Freelance IT Project &amp; Product Manager | ESG Consultant</span><small>EMAIL</small><em>max.polwin@protonmail.com</em><small>PHONE</small><em>+49 151 29902061</em></div>
+  <table>
+    <tr><td>Hintergrund</td><td><code>#0C4A6E</code></td><td>PASS_BG=12, 74, 110</td></tr>
+    <tr><td>Akzent / Label</td><td><code>#5EEAD4</code></td><td>PASS_LABEL=94, 234, 212</td></tr>
+    <tr><td>Text</td><td><code>#F0F9FF</code></td><td>PASS_FG=240, 249, 255</td></tr>
+    <tr><td>Kontrast</td><td colspan="2">Text 8.9:1 · Akzent 6.4:1 · Gedämpft 5.1:1 </td></tr>
+  </table>
+</article></div>
+<script>document.querySelectorAll('.opt').forEach(o=>{if(o.style.getPropertyValue('--bg').trim()=='#F7F8FA')o.querySelector('.card').classList.add('light')})</script>
+</body></html>

@@ -9,18 +9,18 @@
   var CONTACT = Object.freeze({
     firstName: 'Max',
     lastName:  'Polwin',
-    org:       'agradblue GmbH (part of Westbridge)',
-    title:     'Senior Consultant',
-    email:     'max.polwin@agradblue.com',
-    phone:     '+49 173 588 48 17',
+    org:       '',
+    title:     'Freelance IT Project & Product Manager | ESG Consultant',
+    email:     'max.polwin@protonmail.com',
+    phone:     '+49 151 29902061',
     linkedin:  'https://www.linkedin.com/in/maxpolwin/',
-    url:       'https://agradblue.com',
-    street:    'Barckhausstrasse 12-14',
+    url:       'https://maxpolwin.com',
+    street:    'Vogelsbergstraße 44',
     city:      'Frankfurt am Main',
-    zip:       '60325',
+    zip:       '60316',
     country:   'Germany',
     photo:     'photo.jpg',
-    footerOrg: ' ',
+    footerOrg: '',
     showFooter: false,
   });
 </script>
@@ -463,19 +463,20 @@
       var fullName = C.firstName + ' ' + C.lastName;
 
       // Meta tags & page title
-      document.title = fullName + ' — ' + C.footerOrg;
+      document.title = fullName;
       var setMeta = function (attr, val, content) {
         var el = document.querySelector('meta[' + attr + '="' + val + '"]');
         if (el) el.setAttribute('content', content);
       };
       setMeta('name', 'description', 'Digital Business Card — ' + C.title);
-      setMeta('property', 'og:title', fullName + ' — ' + C.footerOrg);
+      setMeta('property', 'og:title', fullName);
       setMeta('property', 'og:description', C.title);
 
       // Header
       document.getElementById('display-name').textContent = fullName;
       document.getElementById('display-title').textContent = C.title;
-      document.getElementById('display-org').textContent = C.org;
+      var orgEl = document.getElementById('display-org');
+      if (C.org) { orgEl.textContent = C.org; } else { orgEl.style.display = 'none'; }
 
       // Avatar
       var avatarImg = document.getElementById('avatar-img');
@@ -498,7 +499,7 @@
       var footerEl = document.querySelector('.card-footer');
       if (C.showFooter) {
         document.getElementById('display-footer').textContent =
-          C.footerOrg + ' · ' + C.street + ' · ' + C.zip + ' ' + C.city;
+          [C.footerOrg, C.street, C.zip + ' ' + C.city].filter(Boolean).join(' · ');
       } else {
         footerEl.style.display = 'none';
       }
@@ -590,7 +591,6 @@
         'VERSION:3.0',
         'N:' + escapeVCard(CONTACT.lastName) + ';' + escapeVCard(CONTACT.firstName) + ';;;',
         'FN:' + escapeVCard(CONTACT.firstName + ' ' + CONTACT.lastName),
-        'ORG:' + escapeVCard(CONTACT.org),
         'TITLE:' + escapeVCard(CONTACT.title),
         'TEL;TYPE=WORK,VOICE:' + CONTACT.phone,
         'EMAIL;TYPE=WORK:' + CONTACT.email,
@@ -609,6 +609,7 @@
         var folded = foldLine(photoLine);
         lines.push(folded);
       }
+      if (CONTACT.org) lines.splice(4, 0, 'ORG:' + escapeVCard(CONTACT.org));
       lines.push('END:VCARD');
       return lines.join('\r\n');
     }
